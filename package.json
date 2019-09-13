@@ -1,0 +1,45 @@
+{
+  "name": "jaeger-client-javascript",
+  "version": "1.0.0",
+  "description": "Jaeger client for Javascript ",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run build:babel",
+    "start": "node dist",
+    "build:babel": "npx babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagrath23/jaeger-client-javascript.git"
+  },
+  "author": "Steven Augusto Villegas Castellanos",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sagrath23/jaeger-client-javascript/issues"
+  },
+  "homepage": "https://github.com/sagrath23/jaeger-client-javascript#readme",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/dist/",
+      "/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.3.0",
+    "jest": "^24.9.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "opentracing": "^0.14.4"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  }
+}
