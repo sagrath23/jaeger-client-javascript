@@ -4,10 +4,16 @@
   "description": "Jaeger client for Javascript ",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run build:babel",
-    "start": "node dist",
-    "build:babel": "npx babel src --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:js": "npx babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build:types": "npx tsc --emitDeclarationOnly",
+    "build": "npm run build:types && npm run build:js",
+    "bundle": "webpack",
+    "check-types": "npx tsc",
+    "prestart": "npm run build",
+    "start": "node lib",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "repository": {
     "type": "git",
@@ -28,12 +34,19 @@
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
     "@babel/register": "^7.6.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.0.4",
     "eslint": "^6.3.0",
     "jest": "^24.9.0",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.0",
+    "webpack-cli": "^3.3.8"
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
